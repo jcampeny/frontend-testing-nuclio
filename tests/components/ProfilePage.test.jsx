@@ -1,16 +1,7 @@
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import {describe, expect, it, vi} from 'vitest';
-import {MemoryRouter} from 'react-router-dom';
 import ProfilePage from '../../src/components/ProfilePage';
 import {useProfile} from '../../src/hooks/useProfile';
-
-vi.mock('react-router-dom', async () => {
-    const actual = await vi.importActual('react-router-dom');
-    return {
-        ...actual,
-        useNavigate: vi.fn(() => vi.fn()),
-    };
-});
 
 const mockProfileData = {
     profile: { firstName: 'John', lastName: 'Doe', profileImage: 'image.jpg' },

@@ -7,14 +7,8 @@ vi.mock('axios');
 
 describe('useLogout Hook', () => {
     it('cierra la sesión correctamente', async () => {
-        axios.post.mockResolvedValueOnce({message: 'Sesión cerrada exitosamente'});
+        // TODO 07
 
-        const {result} = renderHook(() => useLogout());
-
-        await act(async () => {
-            await result.current.logout();
-        });
-
-        expect(axios.post).toHaveBeenCalledWith('/api/users/logout');
+        // Nada de ayuda en este!
     });
 });

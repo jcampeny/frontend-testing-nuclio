@@ -3,14 +3,6 @@ import {describe, expect, it, vi} from 'vitest';
 import RegisterForm from '../../src/components/RegisterForm';
 import {useRegister} from '../../src/hooks/useRegister';
 
-vi.mock('react-router-dom', async () => {
-    const actual = await vi.importActual('react-router-dom');
-    return {
-        ...actual,
-        useNavigate: vi.fn(() => vi.fn()),
-    };
-});
-
 vi.mock('../../src/hooks/useRegister', () => ({
     useRegister: vi.fn(() => ({
         register: vi.fn(),
@@ -19,40 +11,33 @@ vi.mock('../../src/hooks/useRegister', () => ({
     })),
 }));
 
+// npm run test tests/components/RegisterForm.test.jsx
 describe('RegisterForm Component', () => {
-    it('se renderiza correctamente', () => {
-        render(<RegisterForm/>);
 
-        expect(screen.getByPlaceholderText(/Nombre/i)).toBeInTheDocument();
-        expect(screen.getByPlaceholderText(/Email/i)).toBeInTheDocument();
-        expect(screen.getByPlaceholderText(/Contraseña/i)).toBeInTheDocument();
-        expect(screen.getByText(/Registrar/i)).toBeInTheDocument();
+    // npm run test tests/components/RegisterForm.test.jsx -- --testNamePattern="se renderiza correctamente"
+    it('se renderiza correctamente', () => {
+        // TODO 01
+        // Step 1: Utiliza la función render de testing-library para renderizar el componente RegisterForm
+
+        // Step 2: Utiliza las funciones de screen (getByPlaceholderText o getByText)  para buscar los elementos del formulario
+        // y comprobar que estan en el documento .toBeInTheDocument();
     });
 
+    // npm run test tests/components/RegisterForm.test.jsx -- --testNamePattern="muestra un error si el registro falla"
     it('muestra un error si el registro falla', async () => {
-        const registerMock = vi.fn(() => undefined);
-        const mockNavigate = vi.fn();
+        // TODO 04
 
-        useRegister.mockImplementationOnce(() => ({
-            register: registerMock,
-            error: 'Error al registrar',
-            loading: false,
-        }));
+        // Step 1: Hacemos un mock del hook useRegister
 
-        render(<RegisterForm/>);
+        // Step 2: Renderizamos el componente RegisterForm
 
-        // Simular llenar el formulario
-        fireEvent.change(screen.getByPlaceholderText(/Nombre/i), {target: {value: 'John'}});
-        fireEvent.change(screen.getByPlaceholderText(/Email/i), {target: {value: 'john@example.com'}});
-        fireEvent.change(screen.getByPlaceholderText(/Contraseña/i), {target: {value: 'password123'}});
+        // Step 3: Simular llenar el formulario
 
-        // Simular enviar el formulario
-        fireEvent.click(screen.getByRole('button'));
+        // Step 4: Simulamos que mandamos el formulario
 
         await waitFor(() => {
-            expect(screen.getByText(/Error al registrar/i)).toBeInTheDocument();
-            expect(registerMock).toHaveBeenCalled();
-            expect(mockNavigate).not.toHaveBeenCalled();
+            // Step 5: Comprobar que se muestra el mensaje de error
+            // Step 6: Comprobar que se llama a la función register retornada por el Hook useRegister
         });
     });
 });

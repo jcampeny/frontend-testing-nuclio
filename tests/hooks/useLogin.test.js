@@ -6,36 +6,31 @@ import axios from 'axios';
 vi.mock('axios');
 
 describe('useLogin Hook', () => {
+    // npm run test tests/hooks/useLogin.test.js -- --testNamePattern="logea al usuario correctamente"
     it('logea al usuario correctamente', async () => {
-        const mockData = {message: 'Inicio de sesión exitoso'};
-        axios.post.mockResolvedValueOnce({data: mockData});
+        // TODO 05
 
-        const {result} = renderHook(() => useLogin());
+        // Step 2: Hacer un mock de la función post de axios con mockResolvedValueOnce
+
+        // Step 3: Renderizar el hook useLogin
 
         await act(async () => {
-            await result.current.login({email: 'test@test.com', password: 'password123'});
+            // Step 4: Llamar a la función login del hook useLogin con los datos de prueba
+            // await result.current.login( ... )
         });
 
-        expect(axios.post).toHaveBeenCalledWith('/api/users/login',
-            {
-                email: 'test@test.com',
-                password: 'password123',
-            },
-            {withCredentials: true});
-        expect(result.current.error).toBe(null);
-        expect(result.current.loading).toBe(false);
+        // Step 5: Comprobar que se llama a la función post de axios con los datos de prueba
+        // Step 6: Comprobar que el result.current.error es null
+        // Step 7: Comprobar que el result.current.loading es false
     });
 
     it('muestra un error si el login falla', async () => {
-        axios.post.mockRejectedValueOnce(new Error('Error al iniciar sesión'));
+        // TODO 06
 
-        const {result} = renderHook(() => useLogin());
+        // No more help here!
 
-        await act(async () => {
-            await result.current.login({email: 'test@test.com', password: 'password123'});
-        });
-
-        expect(result.current.error).toContain('Error');
-        expect(result.current.loading).toBe(false);
+        // Asserts ...
+        // Comprobar que el result.current.error contiene Error
+        // Comprobar que el result.current.loading es false
     });
 });
