@@ -1,11 +1,8 @@
-import {useNavigate} from "react-router-dom";
-
 import {useProfile} from "../hooks/useProfile";
 import {useLogout} from "../hooks/useLogout";
 import {useEffect} from "react";
 
 const ProfilePage = () => {
-    const navigate = useNavigate();
     const {profile, uploadImage, error, loading, getProfile} = useProfile();
     const {logout} = useLogout();
 
@@ -19,7 +16,6 @@ const ProfilePage = () => {
 
     const handleLogout = async () => {
         await logout();
-        navigate('/login');
     };
 
     useEffect(() => {

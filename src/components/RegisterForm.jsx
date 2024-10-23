@@ -1,17 +1,12 @@
 import {useForm} from "react-hook-form";
 import {useRegister} from "../hooks/useRegister";
-import {useNavigate} from "react-router-dom";
 
 const RegisterForm = () => {
-    const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     const {register: registerUser, error, loading} = useRegister();
 
     const onSubmit = async (data) => {
-        const result = await registerUser(data);
-        if (result) {
-            navigate('/profile');
-        }
+        await registerUser(data);
     };
 
     return (

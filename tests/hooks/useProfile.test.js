@@ -1,5 +1,5 @@
 import {renderHook, act} from '@testing-library/react';
-import {describe, it, expect, vi, afterEach} from 'vitest';
+import {describe, it, expect, vi} from 'vitest';
 import {useProfile} from '../../src/hooks/useProfile';
 import axios from 'axios';
 
