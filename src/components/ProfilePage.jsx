@@ -24,7 +24,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         getProfile();
-    }, [getProfile]);
+    }, []);
 
     return (
         <div>
