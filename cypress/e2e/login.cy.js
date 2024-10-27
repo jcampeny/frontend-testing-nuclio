@@ -4,22 +4,24 @@ describe('Login Form', () => {
   });
 
   it('should navigate to profile after successful login', () => {
-    cy.visit('/login');
+    // TODO 01
+    // Visitar la ruta /login
 
-    cy.get('input[placeholder="Email"]').type('john@example.com');
-    cy.get('input[placeholder="Contraseña"]').type('password123');
-    cy.get('button[type="submit"]').click();
+    // Rellenar el formulario con un email y contraseña
 
-    cy.url().should('include', '/profile');
+    // Hacer clic en el botón de enviar
+
+    // Comprobar que la URL contiene /profile
   });
 
   it('should show an error message on login failure', () => {
-    cy.visit('/login');
+    // TODO 02
+    // Visitar la ruta /login
 
-    cy.get('input[placeholder="Email"]').type('wrong@example.com');
-    cy.get('input[placeholder="Contraseña"]').type('wrongpassword');
-    cy.get('button[type="submit"]').click();
+    // Rellenar el formulario con un email y contraseña INCORRECTOS
 
-    cy.contains('Credenciales inválidas').should('be.visible');
+    // Hacer clic en el botón de enviar
+
+    // Comprobar que se muestra el mensaje de error 'Credenciales inválidas'
   });
 });

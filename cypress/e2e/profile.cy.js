@@ -9,16 +9,17 @@ describe('Profile Page', () => {
 
 
     it('should display the user profile information', () => {
-        cy.visit('/profile');
+        // TODO 05
 
-        cy.contains('John Smith').should('be.visible');
+        // Visitar la ruta /profile y comprobar que esta el nombre del usuario John Smith
     });
 
     it('should allow the user to log out', () => {
-        cy.visit('/profile');
+        // TODO 06
+        // Visitar la ruta /profile
 
-        cy.contains('Cerrar sesión').click();
+        // Hacer clic en el enlace de cerrar sesión
 
-        cy.url().should('include', '/login');
+        // Comprobar que la URL contiene /login
     });
 });

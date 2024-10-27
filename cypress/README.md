@@ -1,4 +1,3 @@
-```markdown
 # Pruebas End-to-End con Cypress
 
 Este directorio contiene las pruebas end-to-end (E2E) para la aplicación frontend utilizando Cypress.
